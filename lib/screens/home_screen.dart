@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../widgets/magic_cards.dart';
 import 'filter_screen.dart';
+import 'name_filter_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -12,7 +13,13 @@ class HomeScreen extends StatelessWidget {
       return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
+          actions: [
+            IconButton(
+                onPressed: () {
+                  FilterByNameModal(context: context);
+                },
+                icon: Icon(Icons.search))
+          ],
           title: Text("Lista de Magias"),
           backgroundColor: Colors.green,
         ),
