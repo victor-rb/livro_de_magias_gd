@@ -1,7 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gd.livro_de_magias_gd">
-   <application
-        android:label="livro_de_magias_gd"
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:label="Livro de Magias"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

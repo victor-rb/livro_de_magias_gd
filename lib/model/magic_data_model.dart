@@ -49,20 +49,26 @@ class MagicData extends ChangeNotifier {
     }
 
     magicData = sortedMagic;
-
     notifyListeners();
   }
 
-  void filterByName(String name) {
-    List<Magic> sortedMagic = List.empty(growable: true);
+  List<String> filterByName(String name) {
+    List<Magic> _sortedMagic = List.empty(growable: true);
+    List<String> _magicNameList = List.empty(growable: true);
 
     _setMagicData();
 
     for (Magic magic in magicData) {
-      if (magic.name.contains(name)) sortedMagic.add(magic);
+      if (magic.name.toLowerCase().contains(name.toLowerCase()) &&
+          name.length > 2) {
+        _sortedMagic.add(magic);
+        _magicNameList.add(magic.name);
+      }
+      ;
     }
-    magicData = sortedMagic;
+    magicData = _sortedMagic;
     notifyListeners();
+    return _magicNameList;
   }
 
   void setArcanaFilter(bool value) {
@@ -181,6 +187,8 @@ class MagicData extends ChangeNotifier {
     circle8Filter = true;
     circle9Filter = true;
     sortCircle = false;
+    _typeFilter.clear();
+    _circleFilter.clear();
     _typeFilter.addAll(defaultTypes);
     _circleFilter.addAll(defaultCircle);
   }
